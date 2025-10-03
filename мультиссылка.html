@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SmartBoss — все сервисы в одном месте</title>
+  <meta name="description" content="Пополнение игр, обмен валюты и полезные Telegram‑каналы — всё на одной странице." />
+  <link rel="icon" href="https://i.ibb.co/2k6fPz1/logo.png">
+  <style>
+    :root {
+      --bg1: #070716;
+      --bg2: #0b0b1a;
+      --text: #f6f7fb;
+      --muted: #c9ccda;
+      --card: rgba(255,255,255,0.06);
+      --border: rgba(255,255,255,0.14);
+      --accent: #002b7f;
+      --accent-pressed: #001f5c;
+      --light: #ffffff;
+      --darkText: #10131a;
+      --radius: 18px;
+      --shadow: 0 14px 40px rgba(0,0,0,.45);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; color:var(--text);
+      background: radial-gradient(900px 600px at 70% -10%, rgba(104,91,255,.18), transparent),
+                  radial-gradient(700px 500px at -10% 10%, rgba(105,219,255,.12), transparent),
+                  linear-gradient(180deg, var(--bg2), var(--bg1));
+      font: 16px/1.55 Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    }
+    .wrap{min-height:100%; display:grid; place-items:center; padding:40px 16px}
+    .container{width:min(860px, 96vw); text-align:center}
+
+    .logo{width:120px; height:120px; border-radius:50%; display:grid; place-items:center; margin:0 auto 20px;
+          background:#fff; box-shadow:var(--shadow); overflow:hidden}
+    .logo img{width:100%; height:100%; object-fit:contain}
+
+    h1{margin:0 0 8px; font-weight:800; font-size:32px; letter-spacing:.2px}
+    .sub{margin:0 auto 28px; color:var(--muted); max-width:620px}
+
+    .stack{display:flex; flex-direction:column; gap:0; align-items:center}
+
+    .block{display:flex; flex-direction:column; gap:16px; margin-bottom:40px; align-items:center; width:100%; max-width:80%}
+
+    .btn, .card {
+      display:flex; align-items:center; justify-content:center; gap:10px;
+      padding:16px 18px; border-radius:20px; font-weight:800; font-size:16px;
+      transition:.25s ease; cursor:pointer; text-decoration:none; width:100%; box-shadow:0 6px 24px rgba(0,0,0,.25);
+    }
+
+    .btn .icon{width:20px; height:20px; flex-shrink:0}
+    .btn:hover{transform:translateY(-2px); box-shadow:0 8px 30px rgba(0,0,0,.35)}
+    .btn:active{transform:translateY(1px)}
+
+    .btn--light{background:var(--light); color:var(--darkText); border:1px solid rgba(0,0,0,.08)}
+    .btn--light:hover{filter:brightness(1.02)}
+
+    .btn--purple{background:var(--accent); color:#fff; border:1px solid var(--accent)}
+    .btn--purple:hover{background:var(--accent-pressed)}
+
+    .card{border:1px solid var(--border); background:var(--card); color:var(--text);
+          border-radius:20px; padding:16px; box-shadow:0 6px 24px rgba(0,0,0,.25); font-weight:400; font-size:15px; text-align:center}
+
+    @media (max-width:480px){
+      h1{font-size:26px}
+      .sub{font-size:14px}
+      .block{max-width:100%}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="container">
+      <div class="logo">
+        <img src="https://i.ibb.co/2k6fPz1/logo.png" alt="SmartBoss">
+      </div>
+      <h1 id="brand">SmartBoss</h1>
+      <p class="sub">Все сервисы и каналы в одном месте. Пополняй баланс игр, меняй валюту и следи за выгодными предложениями по недвижимости и авто — без лишних кликов.</p>
+
+      <div class="stack" id="list">
+        <div class="block">
+          <a class="btn btn--light" href="https://t.me/OYesPlay_bot" target="_blank" rel="noopener">
+            <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2L15 22l-4-9-9-4 20-7z"/></svg>
+            @OYesPlay_bot
+          </a>
+          <div class="card">Пополняй баланс игр — быстро, удобно и без переплат.</div>
+        </div>
+
+        <div class="block">
+          <a class="btn btn--purple" href="https://t.me/EasyChange24Bot" target="_blank" rel="noopener">
+            <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2L15 22l-4-9-9-4 20-7z"/></svg>
+            @EasyChange24Bot
+          </a>
+          <div class="card">Обмениваем рубли ↔ тайские баты быстро и по актуальному курсу.</div>
+        </div>
+
+        <div class="block">
+          <a class="btn btn--light" href="https://t.me/your_realty_channel" target="_blank" rel="noopener">
+            <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2L15 22l-4-9-9-4 20-7z"/></svg>
+            Недвижимость • Telegram‑канал
+          </a>
+          <div class="card">Подборки аренды и продаж с быстрыми апдейтами и честными ценами.</div>
+        </div>
+
+        <div class="block">
+          <a class="btn btn--purple" href="https://t.me/your_auto_channel" target="_blank" rel="noopener">
+            <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2L15 22l-4-9-9-4 20-7z"/></svg>
+            Авто • Telegram‑канал
+          </a>
+          <div class="card">Свежие предложения по авто: проверенные продавцы, реальные фото и цены.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function isMobile(){return /Android|iPhone|iPad|iPod/i.test(navigator.userAgent)}
+    document.querySelectorAll('a[href^="https://t.me/"]').forEach(a=>{
+      const u=new URL(a.href); const user=u.pathname.replace('/','');
+      if(isMobile()){ a.href = `tg://resolve?domain=${encodeURIComponent(user)}`; }
+    });
+  </script>
+</body>
+</html>
