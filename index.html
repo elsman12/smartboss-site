@@ -23,70 +23,112 @@
     }
 
     * { box-sizing: border-box; }
-
     html, body {
       height: 100%;
       margin: 0;
     }
-
     body {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
       color: var(--text);
       background: radial-gradient(900px 600px at 70% -10%, rgba(104,91,255,.18), transparent),
                   radial-gradient(700px 500px at -10% 10%, rgba(105,219,255,.12), transparent),
-                  linear-gradient(180deg, var(--bg2) 0%, var(--bg1) 100%);
-      background-repeat: no-repeat;
-      background-attachment: fixed;
+                  linear-gradient(180deg, var(--bg2), var(--bg1));
       font: 16px/1.55 Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-    }
-
-    .wrap {
-      width: 100%;
-      max-width: 860px;
-      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
       padding: 40px 16px;
     }
 
+    /* ===== ЛОГО ===== */
     .logo {
       width: 120px;
       height: 120px;
-      border-radius: 50%;
+      border-radius: 9999px;
       display: grid;
       place-items: center;
       margin: 0 auto 20px;
       background: #fff;
       box-shadow: var(--shadow);
-      overflow: hidden;
+      padding: 12px;
+      overflow: visible;
+      animation: fadeIn 1.4s ease-out, float 3.5s ease-in-out infinite;
     }
-    .logo img { width: 100%; height: 100%; object-fit: contain; }
+    .logo img {
+      max-width: 100%;
+      max-height: 100%;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+    }
 
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-20px) scale(0.9);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+      100% { transform: translateY(0); }
+    }
+
+    /* ===== ТЕКСТ ===== */
     h1 {
       margin: 0 0 8px;
       font-weight: 800;
       font-size: 32px;
       letter-spacing: .2px;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(15px);
+      animation: textFadeIn 1.2s ease-out forwards, glow 2.5s ease-in-out infinite alternate;
+      animation-delay: 0.4s;
     }
 
     .sub {
       margin: 0 auto 28px;
       color: var(--muted);
       max-width: 620px;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(15px);
+      animation: textFadeIn 1.2s ease-out forwards;
+      animation-delay: 0.8s;
     }
 
-    .stack { display: flex; flex-direction: column; gap: 0; align-items: center; }
+    @keyframes textFadeIn {
+      0% { opacity: 0; transform: translateY(15px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes glow {
+      0% {
+        text-shadow: 0 0 5px #3366ff, 0 0 10px #003cff, 0 0 15px #001f8b;
+        color: #ffffff;
+      }
+      100% {
+        text-shadow: 0 0 15px #5b8eff, 0 0 25px #0040ff, 0 0 35px #0026a3;
+        color: #f6f7fb;
+      }
+    }
+
+    /* ===== БЛОКИ ===== */
+    .stack { display: flex; flex-direction: column; gap: 0; align-items: center; width: 100%; max-width: 600px; }
 
     .block {
       display: flex;
       flex-direction: column;
-      gap: 16px;
-      margin-bottom: 40px;
+      gap: 12px;
+      margin-bottom: 32px;
       align-items: center;
       width: 100%;
-      max-width: 80%;
     }
 
     .btn, .card {
@@ -105,8 +147,15 @@
       box-shadow: 0 6px 24px rgba(0,0,0,.25);
     }
 
-    .btn .icon { width: 20px; height: 20px; flex-shrink: 0; }
-    .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,.35); }
+    .btn .icon {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+    }
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(0,0,0,.35);
+    }
     .btn:active { transform: translateY(1px); }
 
     .btn--light {
@@ -114,7 +163,6 @@
       color: var(--darkText);
       border: 1px solid rgba(0,0,0,.08);
     }
-    .btn--light:hover { filter: brightness(1.02); }
 
     .btn--purple {
       background: var(--accent);
@@ -136,63 +184,52 @@
     }
 
     @media (max-width:480px){
-      h1{font-size:26px}
-      .sub{font-size:14px}
-      .block{max-width:100%}
+      h1 { font-size: 26px; }
+      .sub { font-size: 14px; }
+      .logo { width: 88px; height: 88px; padding: 10px; }
     }
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <div class="logo">
-      <img src="./logo.png" alt="SmartBoss">
-    </div>
-    <h1>SmartBoss</h1>
-    <p class="sub">
-      Все сервисы и каналы в одном месте. Пополняй баланс игр, меняй валюту и следи за выгодными предложениями по недвижимости и авто — без лишних кликов.
-    </p>
-
-    <div class="stack">
-      <div class="block">
-        <a class="btn btn--light" href="https://t.me/OYesPlay_bot" target="_blank" rel="noopener">
-          <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2L15 22l-4-9-9-4 20-7z"/></svg>
-          @OYesPlay_bot
-        </a>
-        <div class="card">Пополняй баланс игр — быстро, удобно и без переплат.</div>
-      </div>
-
-      <div class="block">
-        <a class="btn btn--purple" href="https://t.me/EasyChange24Bot" target="_blank" rel="noopener">
-          <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2L15 22l-4-9-9-4 20-7z"/></svg>
-          @EasyChange24Bot
-        </a>
-        <div class="card">Обмениваем рубли ↔ тайские баты быстро и по актуальному курсу.</div>
-      </div>
-
-      <div class="block">
-        <a class="btn btn--light" href="https://t.me/your_realty_channel" target="_blank" rel="noopener">
-          <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2L15 22l-4-9-9-4 20-7z"/></svg>
-          Недвижимость • Telegram-канал
-        </a>
-        <div class="card">Подборки аренды и продаж с быстрыми апдейтами и честными ценами.</div>
-      </div>
-
-      <div class="block">
-        <a class="btn btn--purple" href="https://t.me/your_auto_channel" target="_blank" rel="noopener">
-          <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2L15 22l-4-9-9-4 20-7z"/></svg>
-          Авто • Telegram-канал
-        </a>
-        <div class="card">Свежие предложения по авто: проверенные продавцы, реальные фото и цены.</div>
-      </div>
-    </div>
+  <div class="logo">
+    <img src="./logo.png" alt="SmartBoss">
   </div>
 
-  <script>
-    function isMobile(){return /Android|iPhone|iPad|iPod/i.test(navigator.userAgent)}
-    document.querySelectorAll('a[href^="https://t.me/"]').forEach(a=>{
-      const u=new URL(a.href); const user=u.pathname.replace('/','');
-      if(isMobile()){ a.href = `tg://resolve?domain=${encodeURIComponent(user)}`; }
-    });
-  </script>
+  <h1>SmartBoss</h1>
+  <p class="sub">Все сервисы и каналы в одном месте. Пополняй баланс игр, меняй валюту и следи за выгодными предложениями по недвижимости и авто — без лишних кликов.</p>
+
+  <div class="stack">
+    <div class="block">
+      <a class="btn btn--light" href="https://t.me/OYesPlay_bot" target="_blank" rel="noopener">
+        <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2L15 22l-4-9-9-4 20-7z"/></svg>
+        @OYesPlay_bot
+      </a>
+      <div class="card">Пополняй баланс игр — быстро, удобно и без переплат.</div>
+    </div>
+
+    <div class="block">
+      <a class="btn btn--purple" href="https://t.me/EasyChange24Bot" target="_blank" rel="noopener">
+        <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2L15 22l-4-9-9-4 20-7z"/></svg>
+        @EasyChange24Bot
+      </a>
+      <div class="card">Обмениваем рубли ↔ тайские баты быстро и по актуальному курсу.</div>
+    </div>
+
+    <div class="block">
+      <a class="btn btn--light" href="https://t.me/your_realty_channel" target="_blank" rel="noopener">
+        <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2L15 22l-4-9-9-4 20-7z"/></svg>
+        Недвижимость • Telegram-канал
+      </a>
+      <div class="card">Подборки аренды и продаж с быстрыми апдейтами и честными ценами.</div>
+    </div>
+
+    <div class="block">
+      <a class="btn btn--purple" href="https://t.me/your_auto_channel" target="_blank" rel="noopener">
+        <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2L15 22l-4-9-9-4 20-7z"/></svg>
+        Авто • Telegram-канал
+      </a>
+      <div class="card">Свежие предложения по авто: проверенные продавцы, реальные фото и цены.</div>
+    </div>
+  </div>
 </body>
 </html>
