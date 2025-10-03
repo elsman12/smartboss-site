@@ -15,20 +15,29 @@
       --light:#fff; --darkText:#10131a;
       --shadow:0 14px 40px rgba(0,0,0,.45);
     }
-    *{box-sizing:border-box}
-    html,body{height:100%;margin:0}
-    body{
-      color:var(--text);
+    *{box-sizing:border-box;margin:0}
+
+    /* фон на html, чтобы не было полосы снизу */
+    html{
+      min-height:100%;
       background:
         radial-gradient(900px 600px at 70% -10%, rgba(104,91,255,.18), transparent),
         radial-gradient(700px 500px at -10% 10%, rgba(105,219,255,.12), transparent),
         linear-gradient(180deg, var(--bg2), var(--bg1));
-      font:16px/1.55 Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      display:flex; flex-direction:column; align-items:center; justify-content:flex-start;
-      padding:40px 16px;
+      background-repeat:no-repeat;
+      background-attachment:fixed;
     }
 
-    /* ---------- лого: фикс обрезания + мобилка ---------- */
+    body{
+      min-height:100vh;           /* растягиваем на всю высоту экрана */
+      color:var(--text);
+      font:16px/1.55 Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      display:flex; flex-direction:column; align-items:center;
+      padding:40px 16px;
+      background:transparent;     /* фон уже на html */
+    }
+
+    /* ---------- лого: круг + не режется внутри ---------- */
     .logo{
       width:120px; height:120px;
       border-radius:9999px;
@@ -36,21 +45,19 @@
       margin:0 auto 20px;
       background:#fff;
       box-shadow:var(--shadow);
-      padding:12px;            /* даём “воздух”, чтобы не резало края */
-      overflow:visible;        /* ничего не отсекаем */
+      padding:12px;               /* “воздух” вокруг иконки */
+      overflow:hidden;            /* строго круг, без торчащих углов */
     }
     .logo img{
-      max-width:100%;
-      max-height:100%;
-      width:auto; height:auto; /* сохраняем пропорции */
-      object-fit:contain;
+      width:100%; height:100%;
+      object-fit:contain;         /* вписываем картинку внутрь круга */
     }
 
     h1{margin:0 0 8px; font-weight:800; font-size:32px; letter-spacing:.2px; text-align:center}
     .sub{margin:0 auto 28px; color:var(--muted); max-width:620px; text-align:center}
 
     .stack{display:flex; flex-direction:column; align-items:center; width:100%; max-width:600px}
-    .block{display:flex; flex-direction:column; gap:12px; margin-bottom:32px; width:100%}
+    .block{display:flex; flex-direction:column; gap:12px; margin:32px 0 0; width:100%}
 
     .btn,.card{
       display:flex; align-items:center; justify-content:center; gap:10px;
@@ -72,7 +79,7 @@
     }
 
     @media (max-width:480px){
-      .logo{width:88px; height:88px; padding:10px}  /* аккуратнее на телефоне */
+      .logo{width:88px; height:88px; padding:10px}
       h1{font-size:26px}
       .sub{font-size:14px}
     }
